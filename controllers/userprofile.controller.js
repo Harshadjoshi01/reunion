@@ -1,6 +1,5 @@
 const CreateError = require("http-errors");
 const User = require("../models/User");
-const jwt = require("jsonwebtoken");
 
 const getuserfollowing = async (req, res, next) => {
     try {
@@ -52,23 +51,9 @@ const getuserprofile = async (req, res, next) => {
     }
 };
 
-const createpost = async (req, res, next) => {
-    try {
-        const { userID } = req.payload;
-        const { title, body } = req.body;
-        const user = User.findOne({ _id: userID });
-        if (!user) throw CreateError.NotFound("User not found");
-        const post = { postID: Math.floor(Math.random() * 1000000000000), title: title, description: body, createdAt: new Date() }
-        user.posts.push(post);
-        user.save();
-        res.status(200).json({
-            message: "Post created",
-            PostId: post.postID,
-            PostTitle: post.title,
-            PostDescription: post.description,
-            PostCreatedAt: post.createdAt
-        });
-    } catch (err) {
-        next(err);
-    }
+
+module.exports = {
+    getuserfollowing,
+    unfollow,
+    getuserprofile
 };
