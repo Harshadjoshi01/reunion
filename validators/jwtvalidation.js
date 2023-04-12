@@ -8,7 +8,6 @@ module.exports = {
         if(!req.headers['authorization']) return next(CreateError.Unauthorized());
         const authHeader = req.headers['authorization'];
         const bearerToken = authHeader.split(' ');
-        console.log(bearerToken);
         const token = bearerToken[1];
         jwt.verify(token, process.env.TOKEN_SECRET, (err, payload) => {
             if(err) {
@@ -27,7 +26,7 @@ module.exports = {
             };
             const secret = process.env.TOKEN_SECRET;
             const options = {
-                expiresIn: '1h',
+                expiresIn: '24h',
                 issuer: 'localhost:3000',
                 audience: `${userID}`,
             };

@@ -1,5 +1,5 @@
 const CreateError = require("http-errors");
-const User = require("../models/User");
+const User = require("../models/User.model");
 const bcrypt = require("bcrypt");
 const { signAccessToken } = require("../validators/jwtvalidation");
 
