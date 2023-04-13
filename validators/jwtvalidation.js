@@ -27,7 +27,7 @@ module.exports = {
             const secret = process.env.TOKEN_SECRET;
             const options = {
                 expiresIn: '24h',
-                issuer: 'localhost:3000',
+                issuer: 'localhost',
                 audience: `${userID}`,
             };
             jwt.sign(payload, secret, options, (err, token) => {

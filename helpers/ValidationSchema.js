@@ -12,12 +12,12 @@ const LoginSchema = Joi.object({
   });
 
   const PostSchema = Joi.object({
-    title: Joi.string().min(6).max(255).required(),
-    description: Joi.string().min(6).max(1024).required(),
+    title: Joi.string().required(),
+    description: Joi.string().required(),
   });
 
   const CommentSchema = Joi.object({
-    comment: Joi.string().min(6).max(1024).required(),
+    comment: Joi.string().required(),
   });
 
   // validation schema for path params id
